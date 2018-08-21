@@ -40,6 +40,13 @@ Trimmed set of fastq files will be stored in `Trimming/Results/Trimmed_fastq_fil
 
 Reads are aligned to reference sequence using bwa.
 
+Build BWA index from reference fasta by running script:
+```
+cd Alignment
+bash index_genome.sh
+```
+Index is stored along with the reference fasta file in `Reference_files/genome`
+
 Invoke alignment by running script:
 ```
 cd Aligment
