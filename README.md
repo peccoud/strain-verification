@@ -58,26 +58,49 @@ Used bwa parameters:
 Number of threads (-t): 10
 ```
 
-Aligned bam files are stored in `Alignment/Results/Alignments`. Downstream steps depending on bam files will look for them in this directory.
+Aligned bam files and their indices are stored in `Alignment/Results/Alignments`. Downstream steps depending on bam files will look for them in this directory.
 
 ## Quality metrics
 Alignment of reads produces information for further inspection of sample and sequencing quality. In this step, Picard is used to assess the quality from bam giles. Picard functions will produce multiple result files corresponding to different types of metrics. See Picard documentation for detailed descriptions on each metric.
 
+In this step, we we also mark duplicate reads with Picard and produce duplicate marked bam files. These bam files will be used for downstream analyses.
+
 Invoke quality assessment by running script:
 ```
 cd Quality_metrics
-bash run_picard.sh
+bash process_samples.sh
 ```
 
-Picard result files will be stored to `Quality_metrics/Picard_results`
+Picard result files will be stored to `Quality_metrics/Results`. Processed bam files for downstream analysis will be stored to `Processed_bams`
 
 ## CNV calling
 
-### cn.mops
-
 ### CNVnator
+Invoke CNVnator analysis by running
+```
+cd CNV_calling
+bash CNVnator/call_samples.sh
+```
+
+By default, CNVnator is run with bin size of 20. Bin size variable is set in the beginning of script `CNVnator/run_CNVnator.sh`.
+
+Results will be stored to `CNV_calling/CNVnator/Results`
+
 
 ### Breakdancer
+For running Breakdancer, you need to set paths and permissions for Breakdancer:
+* Add Breakdancer *perl* directory, located in your breakdance installation root folder, to `PATH` environment variable.
+* Set execution rights for perl script `bam2cfg.pl` in that directory: `chmod gu+x breakdancer/perl/bam2fcfg.pl`. Give the actual path to Breakdancer installation directory.
+
+After setting up, invoke Breakdancer, including configuration and calling itself, by running:
+```
+cd CNV_calling
+bash breakdancer/call_samples.sh
+```
+Results are stored in `CNV_calling/breakdancer/Results`.
+
+Breakdancer calls all samples at the same time. Results of all samples are in the same table.
+
 
 ## De novo assemblies
 
