@@ -1,0 +1,67 @@
+#Software: 1.4.5-unstable-66-4e44b43 (commit 4e44b43)
+#Command: breakdancer-max Breakdancer/breakdancer.conf 
+#Library Statistics:
+#../Processed_bams/GRL1691.rgadded.mkdup.bam	mean:483.58	std:130.14	uppercutoff:1086.61	lowercutoff:39.76	readlen:244.09	library:GRL1691	reflen:12156129	seqcov:62.809	phycov:62.2171	1:923	2:1517	3:239	4:14120	8:870	32:24492
+#../Processed_bams/GRL1693.rgadded.mkdup.bam	mean:522.63	std:144.95	uppercutoff:1212.44	lowercutoff:42.42	readlen:244.75	library:GRL1693	reflen:12156129	seqcov:74.0056	phycov:79.0144	1:914	2:1269	3:338	4:12019	8:789	32:18461
+#../Processed_bams/GRL1694.rgadded.mkdup.bam	mean:504.14	std:145.22	uppercutoff:1198.9	lowercutoff:26.7	readlen:244.25	library:GRL1694	reflen:12156129	seqcov:73.2896	phycov:75.6361	1:1240	2:1566	3:98	4:16555	8:1236	32:29063
+#Chr1	Pos1	Orientation1	Chr2	Pos2	Orientation2	Type	Size	Score	num_Reads	num_Reads_lib	GRL1691.rgadded.mkdup.bam	GRL1693.rgadded.mkdup.bam	GRL1694.rgadded.mkdup.bam
+I	1	42+136-	I	665	42+136-	ITX	-376	48	7	../Processed_bams/GRL1691.rgadded.mkdup.bam|3:../Processed_bams/GRL1693.rgadded.mkdup.bam|1:../Processed_bams/GRL1694.rgadded.mkdup.bam|3	NA	NA	NA
+I	12480	71+63-	I	12684	71+63-	ITX	-288	99	55	../Processed_bams/GRL1691.rgadded.mkdup.bam|21:../Processed_bams/GRL1693.rgadded.mkdup.bam|15:../Processed_bams/GRL1694.rgadded.mkdup.bam|19	NA	NA	NA
+I	26891	5+10-	I	27000	5+10-	ITX	-302	91	5	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1693.rgadded.mkdup.bam|4	NA	NA	NA
+II	8292	2+2-	II	8318	2+2-	ITX	-263	51	2	../Processed_bams/GRL1694.rgadded.mkdup.bam|2	NA	NA	NA
+II	341232	3+0-	II	341959	1+2-	DEL	761	85	2	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1694.rgadded.mkdup.bam|1	1.91	1.66	1.48
+II	469895	65+2-	II	474220	3+61-	DEL	4506	99	58	../Processed_bams/GRL1691.rgadded.mkdup.bam|25:../Processed_bams/GRL1693.rgadded.mkdup.bam|33	0.02	0.01	1.53
+II	469895	65+2-	II	474469	0+3-	DEL	4740	70	3	../Processed_bams/GRL1691.rgadded.mkdup.bam|2:../Processed_bams/GRL1693.rgadded.mkdup.bam|1	0.10	0.09	1.54
+II	469895	65+2-	II	474573	0+4-	DEL	4827	53	2	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1693.rgadded.mkdup.bam|1	0.12	0.12	1.55
+II	521006	3+0-	II	521678	1+2-	DEL	699	62	2	../Processed_bams/GRL1694.rgadded.mkdup.bam|2	1.83	1.86	1.50
+III	17411	6+3-	III	17458	6+3-	INS	-471	99	3	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1693.rgadded.mkdup.bam|2	NA	NA	NA
+III	84508	14+1-	III	92480	2+139-	DEL	7957	99	6	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1693.rgadded.mkdup.bam|3:../Processed_bams/GRL1694.rgadded.mkdup.bam|2	0.07	0.08	0.08
+III	84938	116+11-	III	92480	2+139-	DEL	7688	99	108	../Processed_bams/GRL1691.rgadded.mkdup.bam|24:../Processed_bams/GRL1693.rgadded.mkdup.bam|51:../Processed_bams/GRL1694.rgadded.mkdup.bam|33	0.00	NA	NA
+III	268920	2+6-	III	269316	7+0-	ITX	-331	99	6	../Processed_bams/GRL1691.rgadded.mkdup.bam|2:../Processed_bams/GRL1693.rgadded.mkdup.bam|2:../Processed_bams/GRL1694.rgadded.mkdup.bam|2	0.29	0.17	0.40
+III	847	51+33-	III	316774	75+12-	INV	315187	38	2	../Processed_bams/GRL1694.rgadded.mkdup.bam|2	1.92	1.91	1.91
+III	200951	2+73-	III	294604	138+8-	ITX	92417	99	70	../Processed_bams/GRL1691.rgadded.mkdup.bam|19:../Processed_bams/GRL1693.rgadded.mkdup.bam|26:../Processed_bams/GRL1694.rgadded.mkdup.bam|25	1.93	1.89	1.90
+IV	1	19+51-	IV	239	19+51-	ITX	-362	66	5	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1693.rgadded.mkdup.bam|2:../Processed_bams/GRL1694.rgadded.mkdup.bam|2	NA	NA	NA
+IV	758478	3+3-	IV	758574	3+3-	ITX	-326	60	3	../Processed_bams/GRL1691.rgadded.mkdup.bam|2:../Processed_bams/GRL1693.rgadded.mkdup.bam|1	NA	NA	NA
+IV	758717	4+3-	IV	758843	4+3-	ITX	-274	31	2	../Processed_bams/GRL1694.rgadded.mkdup.bam|2	NA	NA	NA
+IV	1525372	16+29-	IV	1525457	16+29-	ITX	-336	99	9	../Processed_bams/GRL1691.rgadded.mkdup.bam|2:../Processed_bams/GRL1693.rgadded.mkdup.bam|6:../Processed_bams/GRL1694.rgadded.mkdup.bam|1	NA	NA	NA
+IX	25350	14+12-	IX	25535	14+12-	ITX	-298	99	11	../Processed_bams/GRL1691.rgadded.mkdup.bam|3:../Processed_bams/GRL1693.rgadded.mkdup.bam|4:../Processed_bams/GRL1694.rgadded.mkdup.bam|4	NA	NA	NA
+IX	322052	2+2-	IX	322127	2+2-	ITX	-316	38	2	../Processed_bams/GRL1694.rgadded.mkdup.bam|2	NA	NA	NA
+IX	392519	7+8-	IX	392741	7+8-	ITX	-362	46	3	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1693.rgadded.mkdup.bam|1:../Processed_bams/GRL1694.rgadded.mkdup.bam|1	NA	NA	NA
+I	43814	1+1-	Mito	73182	7246+3713-	ITX	5295	99	596	../Processed_bams/GRL1691.rgadded.mkdup.bam|147:../Processed_bams/GRL1693.rgadded.mkdup.bam|194:../Processed_bams/GRL1694.rgadded.mkdup.bam|255	223.67	230.55	226.33
+Mito	11215	1898+1627-	Mito	73182	7246+3713-	INV	26386	99	233	../Processed_bams/GRL1691.rgadded.mkdup.bam|48:../Processed_bams/GRL1693.rgadded.mkdup.bam|86:../Processed_bams/GRL1694.rgadded.mkdup.bam|99	7.59	11.68	7.31
+Mito	16970	745+364-	Mito	73182	7246+3713-	INV	24696	99	81	../Processed_bams/GRL1691.rgadded.mkdup.bam|14:../Processed_bams/GRL1693.rgadded.mkdup.bam|35:../Processed_bams/GRL1694.rgadded.mkdup.bam|32	6.05	9.16	5.79
+Mito	29316	7246+3713-	Mito	83431	1673+829-	ITX	21139	41	217	../Processed_bams/GRL1691.rgadded.mkdup.bam|56:../Processed_bams/GRL1693.rgadded.mkdup.bam|76:../Processed_bams/GRL1694.rgadded.mkdup.bam|85	0.01	0.00	0.00
+Mito	73182	7246+3713-	Mito	85980	1236+178-	INV	14750	99	48	../Processed_bams/GRL1691.rgadded.mkdup.bam|11:../Processed_bams/GRL1693.rgadded.mkdup.bam|19:../Processed_bams/GRL1694.rgadded.mkdup.bam|18	20.47	25.63	22.37
+Mito	11215	1898+1627-	Mito	83431	1673+829-	INV	76618	99	90	../Processed_bams/GRL1691.rgadded.mkdup.bam|31:../Processed_bams/GRL1693.rgadded.mkdup.bam|26:../Processed_bams/GRL1694.rgadded.mkdup.bam|33	21.71	28.66	21.93
+Mito	16725	745+364-	Mito	16779	706+336-	DEL	2907	44	9	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1693.rgadded.mkdup.bam|3:../Processed_bams/GRL1694.rgadded.mkdup.bam|5	27.64	45.44	22.59
+Mito	16970	745+364-	Mito	83431	1673+829-	INV	67781	73	14	../Processed_bams/GRL1691.rgadded.mkdup.bam|3:../Processed_bams/GRL1693.rgadded.mkdup.bam|6:../Processed_bams/GRL1694.rgadded.mkdup.bam|5	21.63	27.99	21.91
+V	115475	2+0-	V	117045	5+103-	DEL	1562	47	2	../Processed_bams/GRL1694.rgadded.mkdup.bam|2	0.67	0.47	0.49
+V	116107	103+0-	V	117045	5+103-	DEL	1145	99	98	../Processed_bams/GRL1691.rgadded.mkdup.bam|31:../Processed_bams/GRL1693.rgadded.mkdup.bam|33:../Processed_bams/GRL1694.rgadded.mkdup.bam|34	NA	NA	0.01
+V	284364	5+8-	V	284770	2+0-	ITX	-385	57	3	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1694.rgadded.mkdup.bam|2	0.29	0.20	0.23
+V	365615	115+115-	V	365671	115+115-	INS	-486	99	114	../Processed_bams/GRL1691.rgadded.mkdup.bam|32:../Processed_bams/GRL1693.rgadded.mkdup.bam|46:../Processed_bams/GRL1694.rgadded.mkdup.bam|36	NA	NA	NA
+VI	4660	12+12-	VI	4837	12+12-	ITX	-436	36	2	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1693.rgadded.mkdup.bam|1	NA	NA	NA
+VI	42800	3+4-	VI	42931	3+4-	ITX	-257	33	2	../Processed_bams/GRL1691.rgadded.mkdup.bam|2	NA	NA	NA
+VII	568541	13+3-	VII	568718	13+3-	ITX	-289	31	2	../Processed_bams/GRL1693.rgadded.mkdup.bam|2	NA	NA	NA
+III	168843	79+37-	VII	735594	49+12-	CTX	-503	99	28	../Processed_bams/GRL1694.rgadded.mkdup.bam|28
+VII	287505	4+0-	VII	878875	1+4-	DEL	591419	80	2	../Processed_bams/GRL1693.rgadded.mkdup.bam|1:../Processed_bams/GRL1694.rgadded.mkdup.bam|1	1.77	1.71	1.73
+VIII	1	15+105-	VIII	47	15+105-	ITX	-376	99	5	../Processed_bams/GRL1691.rgadded.mkdup.bam|2:../Processed_bams/GRL1694.rgadded.mkdup.bam|3	NA	NA	NA
+VIII	1735	8+10-	VIII	1889	8+10-	ITX	-276	36	2	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1694.rgadded.mkdup.bam|1	NA	NA	NA
+VIII	556799	15+13-	VIII	556970	15+13-	ITX	-373	35	2	../Processed_bams/GRL1693.rgadded.mkdup.bam|1:../Processed_bams/GRL1694.rgadded.mkdup.bam|1	NA	NA	NA
+VIII	562245	30+8-	VIII	562576	30+8-	ITX	-416	47	4	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1693.rgadded.mkdup.bam|3	NA	NA	NA
+X	508759	4+3-	X	508807	4+3-	INS	-466	99	2	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1693.rgadded.mkdup.bam|1	NA	NA	NA
+X	713012	2+6-	X	713055	2+6-	ITX	-280	57	2	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1694.rgadded.mkdup.bam|1	NA	NA	NA
+X	713012	2+6-	X	713327	5+1-	ITX	-321	99	5	../Processed_bams/GRL1691.rgadded.mkdup.bam|2:../Processed_bams/GRL1693.rgadded.mkdup.bam|2:../Processed_bams/GRL1694.rgadded.mkdup.bam|1	0.39	0.34	0.38
+XII	1	56+269-	XII	130	56+269-	ITX	-351	99	15	../Processed_bams/GRL1691.rgadded.mkdup.bam|6:../Processed_bams/GRL1693.rgadded.mkdup.bam|4:../Processed_bams/GRL1694.rgadded.mkdup.bam|5	NA	NA	NA
+XII	228550	3+4-	XII	228715	3+4-	ITX	-429	37	2	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1693.rgadded.mkdup.bam|1	NA	NA	NA
+II	165870	2+2-	XII	460786	940+731-	ITX	-343	99	67	../Processed_bams/GRL1691.rgadded.mkdup.bam|18:../Processed_bams/GRL1693.rgadded.mkdup.bam|21:../Processed_bams/GRL1694.rgadded.mkdup.bam|28	52.69	53.58	53.02
+XII	732412	35+12-	XII	734679	2+34-	DEL	2456	99	31	../Processed_bams/GRL1691.rgadded.mkdup.bam|31	NA	1.77	1.85
+XII	460784	940+731-	XII	847884	0+2-	INV	387087	51	2	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1693.rgadded.mkdup.bam|1	1.73	1.57	1.71
+VI	7109	3+0-	XIV	8922	2+3-	CTX	-493	34	2	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1694.rgadded.mkdup.bam|1
+XIII	908139	3+20-	XIII	908758	47+30-	ITX	-384	99	38	../Processed_bams/GRL1691.rgadded.mkdup.bam|14:../Processed_bams/GRL1693.rgadded.mkdup.bam|11:../Processed_bams/GRL1694.rgadded.mkdup.bam|13	0.13	0.19	0.19
+XIV	274140	5+3-	XIV	274285	5+3-	ITX	-299	33	2	../Processed_bams/GRL1693.rgadded.mkdup.bam|2	NA	NA	NA
+XIV	704335	7+3-	XIV	704473	7+3-	ITX	-282	40	2	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1693.rgadded.mkdup.bam|1	NA	NA	NA
+IX	22998	24+0-	XV	28651	51+31-	CTX	-508	99	21	../Processed_bams/GRL1691.rgadded.mkdup.bam|4:../Processed_bams/GRL1693.rgadded.mkdup.bam|10:../Processed_bams/GRL1694.rgadded.mkdup.bam|7
+IX	24117	5+58-	XV	28651	51+31-	CTX	-502	99	45	../Processed_bams/GRL1691.rgadded.mkdup.bam|15:../Processed_bams/GRL1693.rgadded.mkdup.bam|13:../Processed_bams/GRL1694.rgadded.mkdup.bam|17
+III	82922	53+4-	XV	117835	7+20-	CTX	-510	38	5	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1693.rgadded.mkdup.bam|3:../Processed_bams/GRL1694.rgadded.mkdup.bam|1
+VI	148782	10+6-	XV	721628	1+6-	CTX	-503	66	5	../Processed_bams/GRL1694.rgadded.mkdup.bam|5
+XVI	873645	3+2-	XVI	873743	3+2-	ITX	-282	43	2	../Processed_bams/GRL1691.rgadded.mkdup.bam|1:../Processed_bams/GRL1694.rgadded.mkdup.bam|1	NA	NA	NA
