@@ -114,4 +114,4 @@ De novo assemblies were performed with two tools, with SPAdes used for downstrea
 
 ## Assembly metrics (Quast)
 
-## Subsampling series for 
+## Subsampling series 
