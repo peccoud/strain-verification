@@ -104,7 +104,11 @@ Breakdancer calls all samples at the same time. Results of all samples are in th
 
 ## De novo assemblies
 
+De novo assemblies were performed with two tools, with SPAdes used for downstream analyses.
+
 ### SOAP denovo
+
+
 
 ### SPADes
 
