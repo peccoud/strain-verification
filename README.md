@@ -10,12 +10,20 @@ Directory structure reflects the types of performed analyses. Scripts for perfor
 * cutadapt - https://cutadapt.readthedocs.io/en/stable/
 * bwa - http://bio-bwa.sourceforge.net
 * Picard - https://broadinstitute.github.io/picard/
+* CNVnator
+* Breakdancer
+* Samtools
+* BCFtools
+* Genome Analysis Toolkit (GATK)
+* SOAPdenovo
+* SPAdes
+* QUAST
 
 # Analysis steps
 
 Note that instructions for each step assume that working directory in the beginning of the step is the repository's root directory, i.e. the directory where this `README` file is located.
 
-## FastQC before trimming
+## FastQC (v0.11.7) before trimming
 FastQC calculates and visualizes sequencing quality metrics, e.g. GC content distribution and sequencing adapter contamination. FastQC metrics can be used to identify issues in sequencing. Comparing metrics befor and after trimming step helps to determine if trimming was successful.
  
 Run FastQC by invoking script:
@@ -47,16 +55,12 @@ bash index_genome.sh
 ```
 Index is stored along with the reference fasta file in `Reference_files/genome`
 
-Invoke alignment by running script:
+Alignment is performed using BWA (v. 0.7.15) with default parameters. Invoke alignment by running script:
 ```
 cd Aligment
 bash align_samples.sh
 ```
 
-Used bwa parameters:
-```
-Number of threads (-t): 10
-```
 
 Aligned bam files and their indices are stored in `Alignment/Results/Alignments`. Downstream steps depending on bam files will look for them in this directory.
 
@@ -75,7 +79,7 @@ Picard result files will be stored to `Quality_metrics/Results`. Processed bam f
 
 ## CNV calling
 
-### CNVnator
+### CNVnator (v0.3.3)
 Invoke CNVnator analysis by running
 ```
 cd CNV_calling
@@ -87,12 +91,12 @@ By default, CNVnator is run with bin size of 20. Bin size variable is set in the
 Results will be stored to `CNV_calling/CNVnator/Results`
 
 
-### Breakdancer
+### Breakdancer v. 1.3.6
 For running Breakdancer, you need to set paths and permissions for Breakdancer:
 * Add Breakdancer *perl* directory, located in your breakdance installation root folder, to `PATH` environment variable.
 * Set execution rights for perl script `bam2cfg.pl` in that directory: `chmod gu+x breakdancer/perl/bam2fcfg.pl`. Give the actual path to Breakdancer installation directory.
 
-After setting up, invoke Breakdancer, including configuration and calling itself, by running:
+After setting up, invoke Breakdancer, including automatic configuration, by running:
 ```
 cd CNV_calling
 bash breakdancer/call_samples.sh
@@ -101,17 +105,54 @@ Results are stored in `CNV_calling/breakdancer/Results`.
 
 Breakdancer calls all samples at the same time. Results of all samples are in the same table.
 
+## Variant calling
+
+### GATK
+
+### Samtools + bcftools
+
 
 ## De novo assemblies
 
 De novo assemblies were performed with two tools, with SPAdes used for downstream analyses.
 
-### SOAP denovo
+### SOAPdenovo (v. 2.04)
+
+Setup SOAPdenovo assembler by adding the folder with its executables to `PATH` and setting execution rights to for file `SOAPdenovo-63mer`, located in the root folder of SOAPDenovo. In addition, SOAPdenovo requires creation of configuration files. Configuration files were created manually and are located in folder `SOAPdenovo/configs`.
+
+Setup QUAST for calculating assembly quality metrics by adding the root folder of Quast to `PATH` and setting execution rights for file `quast.py` inside of it.
+
+Execute SOAPdenovo assembly and calculate metrics with Quast by running:
+```
+cd Denovo_assembly
+python SOAPdenovo/run_SOAPdenovo_assembly.py
+```
+Results, both assemblies and QUAST results, will be stored to `Denovo_assembly/SOAPdenovo/results`. Quast was run two times for each sample - once on scaffolds and once on contigs. Results for each sample are stored in folders `quast_results_scaffolds`and `quast_results_contigs`. Metrics are stored in a tabular format in files `report.tsv` and `transposed_report.tsv`. In addition, Quast creates a visual report as an html file, `report.html`, which can be viewed in a web browser.
 
 
+### SPADes (v. 3.9.0)
 
-### SPADes
+Setup SPAdes assembler by adding directory `bin` in SPAdes directory to your `PATH`.
+
+Execute SPAdes assembly and calculate metrics with Quast by running:
+```
+cd Denovo_assembly
+python SPAdes/run_SPAdes_assembly.py
+```
 
 ## Assembly metrics (Quast)
+TODO: Explain some of the metrics
 
-## Subsampling series for 
+## Subsampling series 
+Subsampling series were performed to assess the effect of depth of sequencing on variant calling and assembly quality. Variant calling in subsamplling series was performed with Samtools and assemblies were made with SPAdes. In each round of subsampling, three steps were performed:
+
+* Subsampling itself
+* Variant calling with Samtools
+* Variant annotation with snpEFF
+* Assembly with SPAdes
+* Assessment of the assembly with Quast
+
+
+
+
+### 
