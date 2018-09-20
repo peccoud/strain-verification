@@ -10,14 +10,15 @@ Directory structure reflects the types of performed analyses. Scripts for perfor
 * cutadapt - https://cutadapt.readthedocs.io/en/stable/
 * bwa - http://bio-bwa.sourceforge.net
 * Picard - https://broadinstitute.github.io/picard/
-* CNVnator
-* Breakdancer
-* Samtools
-* BCFtools
-* Genome Analysis Toolkit (GATK)
-* SOAPdenovo
-* SPAdes
-* QUAST
+* CNVnator - https://github.com/abyzovlab/CNVnator
+* Breakdancer - http://breakdancer.sourceforge.net/
+* Samtools - http://www.htslib.org/doc/samtools.html
+* BCFtools - https://samtools.github.io/bcftools//bcftools.html
+* Genome Analysis Toolkit (GATK) - https://software.broadinstitute.org/gatk/
+* snpEFF - http://snpeff.sourceforge.net/
+* SOAPdenovo2 - http://soap.genomics.org.cn/soapdenovo.html
+* SPAdes - http://cab.spbu.ru/software/spades/
+* QUAST - http://bioinf.spbau.ru/quast
 
 # Analysis steps
 
@@ -107,16 +108,41 @@ Breakdancer calls all samples at the same time. Results of all samples are in th
 
 ## Variant calling
 
-### GATK
+Variant calling was run both with GATK pipeline and a pipeline consisting of Samtools and bcftools.
 
-### Samtools + bcftools
+In both cases, variant calling was run jointly on both samples of interest, GRL1691 and GRL1693. Variant calling was run against yeast reference genome R64-1-1, corresponding to strain 288C. Called variants were filtered to contain only discordantly called variants between GRL1691 and GRL1693, annotated with snpEFF, and annotated vcf file was formatted further with a custom script. 
 
+### GATK (v3.8 and v4.beta.5)
+
+GATK pipeline consists of calling GATK HaplotypeCaller separately on each sample with `--sample-ploidy` set to 1, combining resulting GVCF files with GATK CombineGVCFs, and running GATK GenotypeVCFs on the combined GVC. GATK tools were run with GATK version, except for CombineGVCFs, which was run with GATK version 3.8, as there was no working version of it in GATK 4 at the time of setting up the analyses. 
+
+The main difference in approach to variant calling between GATK HaplotypeCaller and Bcftools is that GATK HaplotypeCaller does local reassembly in the regions with genomic variation. This leads to better accuracy in case of e.g. indels that might affect alignment rate or quality. Documentation of GATK contains a more detailed explanation of the main steps taken by HaplotypeCaller: [https://software.broadinstitute.org/gatk/documentation/tooldocs/3.8-0/org_broadinstitute_gatk_tools_walkers_haplotypecaller_HaplotypeCaller.php].
+
+Execute GATK pipeline by running
+```
+cd Variant_calling
+bash GATK/run_GATK_pipeline.sh
+```
+
+Results will be stored in `GATK/Results`. Script keeps all intermediate files. Annotated and formatted discordant variants are in a tab-separated file `joint.discordant.annotated.formatted.tsv`.
+
+
+### Bcftools (v.1.8) of SAMtools software suite
+
+Execute Bcftools pipeline by running
+
+```
+cd Variant_calling
+bash Bcftools/run_bcftools_pipeline.sh
+```
 
 ## De novo assemblies
 
 De novo assemblies were performed with two tools, with SPAdes used for downstream analyses.
 
 ### SOAPdenovo (v. 2.04)
+
+SOAPdenovo2 is a short read de novo assembler based on Hamiltonian de Bruijin graphs. SOAPdenovo2 builds contigs using overlapping reads, and joints contigs to form scaffolds based on read pairness and insert size information.
 
 Setup SOAPdenovo assembler by adding the folder with its executables to `PATH` and setting execution rights to for file `SOAPdenovo-63mer`, located in the root folder of SOAPDenovo. In addition, SOAPdenovo requires creation of configuration files. Configuration files were created manually and are located in folder `SOAPdenovo/configs`.
 
@@ -127,10 +153,11 @@ Execute SOAPdenovo assembly and calculate metrics with Quast by running:
 cd Denovo_assembly
 python SOAPdenovo/run_SOAPdenovo_assembly.py
 ```
-Results, both assemblies and QUAST results, will be stored to `Denovo_assembly/SOAPdenovo/results`. Quast was run two times for each sample - once on scaffolds and once on contigs. Results for each sample are stored in folders `quast_results_scaffolds`and `quast_results_contigs`. Metrics are stored in a tabular format in files `report.tsv` and `transposed_report.tsv`. In addition, Quast creates a visual report as an html file, `report.html`, which can be viewed in a web browser.
+Results, both assemblies and QUAST results, will be stored to `Denovo_assembly/SOAPdenovo/results`. Quast was run two times for each sample - once on scaffolds and once on contigs. Results for each sample are stored in folders `quast_results_scaffolds` and `quast_results_contigs`. Metrics are stored in a tabular format in files `report.tsv` and `transposed_report.tsv`. In addition, Quast creates a visual report as an html file, `report.html`, which can be viewed in a web browser.
 
 
 ### SPADes (v. 3.9.0)
+SPAdes is another de novo assembler for short reads, based on Eulerian de Bruijin graphs. Outline of the complex algorithm is presented in SPAdes' publication.
 
 Setup SPAdes assembler by adding directory `bin` in SPAdes directory to your `PATH`.
 
@@ -140,11 +167,15 @@ cd Denovo_assembly
 python SPAdes/run_SPAdes_assembly.py
 ```
 
+## Annotation by blasting
+TBD.
+
 ## Assembly metrics (Quast)
-TODO: Explain some of the metrics
+
+Quast is run as part of assembly pipelines, so there is no need to run it separately. Various metrics reported by Quast are explained in [http://quast.bioinf.spbau.ru/manual.html#sec3](its manual).
 
 ## Subsampling series 
-Subsampling series were performed to assess the effect of depth of sequencing on variant calling and assembly quality. Variant calling in subsamplling series was performed with Samtools and assemblies were made with SPAdes. In each round of subsampling, three steps were performed:
+Subsampling series were performed to assess the effect of depth of sequencing on variant calling and assembly quality. Variant calling in subsamplling series was performed with Samtools and assemblies were made with SPAdes. In each round of subsampling, following steps were performed:
 
 * Subsampling itself
 * Variant calling with Samtools
@@ -155,3 +186,21 @@ Subsampling series were performed to assess the effect of depth of sequencing on
 
 
 
+## References
+References
+FASTQC: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+TRIMGALORE: https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
+BWA: Li, H. (2013). Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM, 00(00), 1–3. http://doi.org/arXiv:1303.3997 [q-bio.GN]
+ENSEMBL: Zerbino, D. R., Achuthan, P., Akanni, W., Amode, M. R., Barrell, D., Bhai, J., … Flicek, P. (2018). Ensembl 2018. Nucleic Acids Research, 46(D1), D754–D761. http://doi.org/10.1093/nar/gkx1098
+PICARD: https://broadinstitute.github.io/picard/
+CNVKIT: Zerbino, D. R., Achuthan, P., Akanni, W., Amode, M. R., Barrell, D., Bhai, J., … Flicek, P. (2018). Ensembl 2018. Nucleic Acids Research, 46(D1), D754–D761. http://doi.org/10.1093/nar/gkx1098
+CNVnator: Abyzov, A., Urban, A. E., Snyder, M., & Gerstein, M. (2011). CNVnator: An approach to discover, genotype, and characterize typical and atypical CNVs from family and population genome sequencing. Genome Research, 21(6), 974–984. http://doi.org/10.1101/gr.114876.110
+BREAKDANCER: Chen, K., Wallis, J. W., Mclellan, M. D., Larson, D. E., Kalicki, J. M., Pohl, C. S., … Elaine, R. (2013). BreaDancer - An algorithm for high resolution mapping of genomic structure variation. Nature Methods, 6(9), 677–681. http://doi.org/10.1038/nmeth.1363.BreakDancer
+GATK: Van der Auwera, G. A., Carneiro, M. O., Hartl, C., Poplin, R., del Angel, G., Levy-Moonshine, A., … DePristo, M. A. (2013). From fastQ data to high-confidence variant calls: The genome analysis toolkit best practices pipeline. Current Protocols in Bioinformatics. http://doi.org/10.1002/0471250953.bi1110s43
+SAMTOOLS: Li, H. (2011). A statistical framework for SNP calling, mutation discovery, association mapping and population genetical parameter estimation from sequencing data. Bioinformatics, 27(21), 2987–2993. http://doi.org/10.1093/bioinformatics/btr509
+BCFTOOLS: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3198575/
+SNPEFF: Cingolani, P., Platts, A., Wang, L. L., Coon, M., Nguyen, T., Wang, L., … Ruden, D. M. (2012). A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff. Fly, 6(2), 80–92. http://doi.org/10.4161/fly.19695
+SPADES: Bankevich, A., Nurk, S., Antipov, D., Gurevich, A. A., Dvorkin, M., Kulikov, A. S., … Pevzner, P. A. (2012). SPAdes: A New Genome Assembly Algorithm and Its Applications to Single-Cell Sequencing. Journal of Computational Biology, 19(5), 455–477. http://doi.org/10.1089/cmb.2012.0021
+SOAPDENOVO: Luo, R., Liu, B., Xie, Y., Li, Z., Huang, W., Yuan, J., … Wang, J. (2012). SOAPdenovo2: an empirically improved memory-efficient sort read de novo assembler. GigaScience, 1(18), 1–6. http://doi.org/10.1186/2047-217X-1-18
+QUAST: Bankevich, A., Nurk, S., Antipov, D., Gurevich, A. A., Dvorkin, M., Kulikov, A. S., … Pevzner, P. A. (2012). SPAdes: A New Genome Assembly Algorithm and Its Applications to Single-Cell Sequencing. Journal of Computational Biology, 19(5), 455–477. http://doi.org/10.1089/cmb.2012.0021
+BLAST: Bankevich, A., Nurk, S., Antipov, D., Gurevich, A. A., Dvorkin, M., Kulikov, A. S., … Pevzner, P. A. (2012). SPAdes: A New Genome Assembly Algorithm and Its Applications to Single-Cell Sequencing. Journal of Computational Biology, 19(5), 455–477. http://doi.org/10.1089/cmb.2012.0021
