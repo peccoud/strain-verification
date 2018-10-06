@@ -133,8 +133,9 @@ Execute Bcftools pipeline by running
 
 ```
 cd Variant_calling
-bash Bcftools/run_bcftools_pipeline.sh
+bash Samtools/run_Samtools_pipeline.sh
 ```
+Results will be stored in `Samtools/Results`. As with GATK, intermediate files are kept, and annotated and formatted discordant variants are in a tab-separated file `joint.discordant.annotated.formatted.tsv`.
 
 ## De novo assemblies
 
@@ -188,19 +189,19 @@ Subsampling series were performed to assess the effect of depth of sequencing on
 
 ## References
 References
-*FASTQC: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
-*TRIMGALORE: https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
-*BWA: Li, H. (2013). Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM, 00(00), 1–3. http://doi.org/arXiv:1303.3997 [q-bio.GN]
-*ENSEMBL: Zerbino, D. R., Achuthan, P., Akanni, W., Amode, M. R., Barrell, D., Bhai, J., … Flicek, P. (2018). Ensembl 2018. Nucleic Acids Research, 46(D1), D754–D761. http://doi.org/10.1093/nar/gkx1098
-*PICARD: https://broadinstitute.github.io/picard/
-*CNVKIT: Zerbino, D. R., Achuthan, P., Akanni, W., Amode, M. R., Barrell, D., Bhai, J., … Flicek, P. (2018). Ensembl 2018. Nucleic Acids Research, 46(D1), D754–D761. http://doi.org/10.1093/nar/gkx1098
-*CNVnator: Abyzov, A., Urban, A. E., Snyder, M., & Gerstein, M. (2011). CNVnator: An approach to discover, genotype, and characterize typical and atypical CNVs from family and population genome sequencing. Genome Research, 21(6), 974–984. http://doi.org/10.1101/gr.114876.110
-*BREAKDANCER: Chen, K., Wallis, J. W., Mclellan, M. D., Larson, D. E., Kalicki, J. M., Pohl, C. S., … Elaine, R. (2013). BreaDancer - An algorithm for high resolution mapping of genomic structure variation. Nature Methods, 6(9), 677–681. http://doi.org/10.1038/nmeth.1363.BreakDancer
-*GATK: Van der Auwera, G. A., Carneiro, M. O., Hartl, C., Poplin, R., del Angel, G., Levy-Moonshine, A., … DePristo, M. A. (2013). From fastQ data to high-confidence variant calls: The genome analysis toolkit best practices pipeline. Current Protocols in Bioinformatics. http://doi.org/10.1002/0471250953.bi1110s43
-*SAMTOOLS: Li, H. (2011). A statistical framework for SNP calling, mutation discovery, association mapping and population genetical parameter estimation from sequencing data. Bioinformatics, 27(21), 2987–2993. http://doi.org/10.1093/bioinformatics/btr509
-*BCFTOOLS: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3198575/
-*SNPEFF: Cingolani, P., Platts, A., Wang, L. L., Coon, M., Nguyen, T., Wang, L., … Ruden, D. M. (2012). A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff. Fly, 6(2), 80–92. http://doi.org/10.4161/fly.19695
-*SPADES: Bankevich, A., Nurk, S., Antipov, D., Gurevich, A. A., Dvorkin, M., Kulikov, A. S., … Pevzner, P. A. (2012). SPAdes: A New Genome Assembly Algorithm and Its Applications to Single-Cell Sequencing. Journal of Computational Biology, 19(5), 455–477. http://doi.org/10.1089/cmb.2012.0021
-*SOAPDENOVO:
-*QUAST: 
-*BLAST: 
+* FASTQC: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+* TRIMGALORE: https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
+* BWA: Li, H. (2013). Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM, 00(00), 1–3. http://doi.org/arXiv:1303.3997 [q-bio.GN]
+* ENSEMBL: Zerbino, D. R., Achuthan, P., Akanni, W., Amode, M. R., Barrell, D., Bhai, J., … Flicek, P. (2018). Ensembl 2018. Nucleic Acids Research, 46(D1), D754–D761. http://doi.org/10.1093/nar/gkx1098
+* PICARD: https://broadinstitute.github.io/picard/
+* CNVKIT: Zerbino, D. R., Achuthan, P., Akanni, W., Amode, M. R., Barrell, D., Bhai, J., … Flicek, P. (2018). Ensembl 2018. Nucleic Acids Research, 46(D1), D754–D761. http://doi.org/10.1093/nar/gkx1098
+* CNVnator: Abyzov, A., Urban, A. E., Snyder, M., & Gerstein, M. (2011). CNVnator: An approach to discover, genotype, and characterize typical and atypical CNVs from family and population genome sequencing. Genome Research, 21(6), 974–984. http://doi.org/10.1101/gr.114876.110
+* BREAKDANCER: Chen, K., Wallis, J. W., Mclellan, M. D., Larson, D. E., Kalicki, J. M., Pohl, C. S., … Elaine, R. (2013). BreaDancer - An algorithm for high resolution mapping of genomic structure variation. Nature Methods, 6(9), 677–681. http://doi.org/10.1038/nmeth.1363.BreakDancer
+* GATK: Van der Auwera, G. A., Carneiro, M. O., Hartl, C., Poplin, R., del Angel, G., Levy-Moonshine, A., … DePristo, M. A. (2013). From fastQ data to high-confidence variant calls: The genome analysis toolkit best practices pipeline. Current Protocols in Bioinformatics. http://doi.org/10.1002/0471250953.bi1110s43
+* SAMTOOLS: Li, H. (2011). A statistical framework for SNP calling, mutation discovery, association mapping and population genetical parameter estimation from sequencing data. Bioinformatics, 27(21), 2987–2993. http://doi.org/10.1093/bioinformatics/btr509
+* BCFTOOLS: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3198575/
+* SNPEFF: Cingolani, P., Platts, A., Wang, L. L., Coon, M., Nguyen, T., Wang, L., … Ruden, D. M. (2012). A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff. Fly, 6(2), 80–92. http://doi.org/10.4161/fly.19695
+* SPADES: Bankevich, A., Nurk, S., Antipov, D., Gurevich, A. A., Dvorkin, M., Kulikov, A. S., … Pevzner, P. A. (2012). SPAdes: A New Genome Assembly Algorithm and Its Applications to Single-Cell Sequencing. Journal of Computational Biology, 19(5), 455–477. http://doi.org/10.1089/cmb.2012.0021
+* SOAPDENOVO:
+* QUAST: 
+* BLAST: 
