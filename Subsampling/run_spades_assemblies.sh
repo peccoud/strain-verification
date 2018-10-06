@@ -1,0 +1,6 @@
+#/bin/bash
+
+python3 spades_assembly_series.py GRL1691_subsampling_series
+python3 spades_assembly_series.py GRL1693_subsampling_series
+python3 spades_assembly_series.py GRL1694_subsampling_series
+

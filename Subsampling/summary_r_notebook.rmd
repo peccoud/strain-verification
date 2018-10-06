@@ -1,0 +1,158 @@
+---
+title: "Summary of assembly series"
+output: html_notebook
+---
+
+
+
+# Figure 1: Assembly metrics
+```{r}
+library(ggplot2)
+fig_ouput_dir='Results/Summarized_results/Summary_figures'
+dir.create(fig_output_dir, showWarnings = F)
+```
+
+
+
+# Summary figures of assembly series
+
+This R Notebook contains summary table and figures of selected quality metrics of assembly series.
+```{bash}
+python3 combine_quast_results.py
+```
+
+```
+
+## Summary table
+```{r}
+options(scipen=10000)
+quast_metrics = read.csv('Results/Summarized_results/Combined_Quast_reports.tsv',
+                           sep='\t', header=T, stringsAsFactors=F)
+quast_metrics
+
+
+```
+
+## Total number of contigs
+```{r, message=F}
+g = ggplot(aes(x=reads, y=X..contigs, colour=sample_name), data=quast_metrics) +
+      geom_line() +
+      xlab('Number of read pairs') + 
+      ylab('Total contigs') +
+      #ylim(c(0,300)) +
+      theme_minimal() + 
+      #scale_x_reverse() +
+      labs(color='Sample') +
+      scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) 
+g
+ggsave(file.path(fig_output_dir, 'total_contigs.pdf'), g)
+```
+
+## N50
+```{r}
+g = ggplot(aes(x=reads, y=N50, colour=sample_name), data=quast_metrics) +
+      geom_line() +
+      xlab('Number of read pairs') + 
+      ylab('N50') +
+      #ylim(c(0,300)) +
+      theme_minimal() + 
+      scale_x_reverse() +
+      scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) +
+      labs(color='Sample')
+g
+ggsave(file.path(fig_output_dir, 'N50.pdf'), g)
+```
+
+## Genome fraction covered
+```{r}
+g = ggplot(aes(x=reads, y=Genome.fraction...., colour=sample_name), data=quast_metrics) +
+      geom_line() +
+      xlab('Number of read pairs') + 
+      ylab('Genome fraction covered') +
+      #ylim(c(0,300)) +
+      theme_minimal() + 
+      scale_x_reverse()
+g
+ggsave(file.path(fig_ouput_dir, 'genome_fraction_covered.pdf'), g)
+```
+
+## Largest contig
+```{r}
+g = ggplot(aes(x=reads, y=Largest.contig, colour=sample_name), data=quast_metrics) +
+      geom_line() +
+      xlab('Number of read pairs') + 
+      ylab('Largest contig') +
+      #ylim(c(0,300)) +
+      theme_minimal() + 
+      scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) +
+      scale_y_continuous(breaks = scales::pretty_breaks(n = 5)) +
+      #scale_x_reverse() +
+      labs(color='Sample')
+g
+ggsave(file.path(fig_ouput_dir, 'largest_contig.pdf'), g)
+```
+
+## Total length of assembly
+```{r}
+g = ggplot(aes(x=reads, y=Total.length, colour=sample_name), data=quast_metrics) +
+      geom_line() +
+      xlab('Number of read pairs') + 
+      ylab('Total length of assembly') +
+      #ylim(c(0,300)) +
+      theme_minimal() + 
+      labs(color='Sample') + 
+      scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) 
+g
+ggsave(file.path(fig_ouput_dir, 'assembly_length.pdf'), g)
+```
+
+## Mismatches per 100kbp
+```{r}
+g = ggplot(aes(x=reads, y=X..mismatches.per.100.kbp, colour=sample_name), data=quast_metrics) +
+      geom_line() +
+      xlab('Number of read pairs') + 
+      ylab('Mismatches per 100kbp') +
+      #ylim(c(0,300)) +
+      theme_minimal() + 
+      #scale_x_reverse() +
+      labs(color='Sample') + 
+      scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) 
+g
+ggsave(file.path(fig_ouput_dir, 'mismatches_per_100kbp.pdf'), g)
+```
+
+## Indels per 100kbp
+```{r}
+g = ggplot(aes(x=reads, y=X..indels.per.100.kbp, colour=sample_name), data=quast_metrics) +
+      geom_line() +
+      xlab('Number of read pairs') + 
+      ylab('Indels per 100kbp') +
+      #ylim(c(0,300)) +
+      theme_minimal() + 
+      #scale_x_reverse() +
+      labs(color='Sample') + 
+      scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) 
+g
+ggsave(file.path(fig_ouput_dir, 'indels_per_100kbp.pdf'), g)
+```
+
+## Number of misassemblies
+Quast defines misassemblies as a positions in the contigs (breakpoints) that satisfy one of the following criteria:
+* the left flanking sequence aligns over 1 kbp away from the right flanking sequence on the reference
+* flanking sequences overlap on more than 1 kbp
+* flanking sequences align to different strands or different chromosomes
+
+```{r}
+g = ggplot(aes(x=reads, y=X..misassemblies, colour=sample_name), data=quast_metrics) +
+      geom_line() +
+      xlab('Number of read pairs') + 
+      ylab('Misassemblies') +
+      #ylim(c(0,300)) +
+      theme_minimal() + 
+      #scale_x_reverse() +
+      labs(color='Sample') + 
+      scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) 
+g
+ggsave(file.path(fig_ouput_dir, 'misassemblies.pdf'), g)
+```
+
