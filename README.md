@@ -87,7 +87,7 @@ cd CNV_calling
 bash CNVnator/call_samples.sh
 ```
 
-By default, CNVnator is run with bin size of 20. Bin size variable is set in the beginning of script `CNVnator/run_CNVnator.sh`.
+CNVnator is run with bin size of 20. Bin size variable is set in the beginning of script `CNVnator/run_CNVnator.sh`. Using larger bin sizes leads to missing deletions known to be in the sample and clearly visible by manual inspection.
 
 Results will be stored to `CNV_calling/CNVnator/Results`
 
