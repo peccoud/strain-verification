@@ -184,8 +184,30 @@ Subsampling series were performed to assess the effect of depth of sequencing on
 * Assembly with SPAdes
 * Assessment of the assembly with Quast
 
+### Running subsampling analyses
 
+Run subsampling:
+```
+cd Subsampling
+bash run_subsampling.sh
+```
+Samples are subsampled using a default random seed value of X to make subsampling reproducible. Sampling procedure produces one sample for each of the following target number of read pairs: 10 000, 30 000, 60 000, 90 000, 120 000, 150 000, 180 000, 210 000, 240 000, 260 000, 300 000, 400 000, 500 000, 600 000, 700 000, 800 000, 900 000, 1 000 000, 1 200 000, 1 400 000, 1 600 000, 1 800 000, 2 000 000, 2 500 000, 3 000 000, 3 500 000.
 
+After subsampling is complete, run SPAdes assemblies and assessment of their qualities. Note that both subsampling and performing tens of assemblies is time-consuming.
+
+```
+bash run_spades_assemblies.sh
+bash run_quast_series.sh
+```
+
+### Result files
+
+Results are summarized and visualized using an R Notebook. Render a pdf summary report by running
+
+```
+bash summarize_results.sh
+```
+RESULTS WILL BE STORED
 
 ## References
 References
