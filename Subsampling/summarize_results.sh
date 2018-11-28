@@ -1,3 +1,3 @@
 #!/bin/bash
 
-RScript render_notebook.r
+Rscript render_notebook.r
