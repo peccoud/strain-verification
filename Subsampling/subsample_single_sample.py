@@ -19,9 +19,9 @@ os.makedirs(downsampling_res_dir, exist_ok=True)
 
 # Number of reads to downsample to
 downsampling_targets = [10000, 30000, 60000, 90000, 120000, 150000,
-                        180000, 21000, 240000, 260000, 300000, 400000,
+                        180000, 210000, 240000, 260000, 300000, 400000,
                         500000, 600000, 700000, 800000, 900000, 1000000,
-                        1200000, 1400000, 1600000, 180000, 2000000,
+                        1200000, 1400000, 1600000, 1800000, 2000000,
                         2500000, 3000000, 3500000]
 
 def downsample_fastq(reads1, reads2, target_dir, downsampling_target):
