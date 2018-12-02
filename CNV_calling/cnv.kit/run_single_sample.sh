@@ -7,6 +7,7 @@ ref_folder=../../../../Reference_files
 ref_fasta=${ref_folder}/genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa
 
 mkdir -p Intermediary_files/${sample_name}
+mkdir -p Results/${sample_name}
 cd Intermediary_files/${sample_name}
 
 # Binning
@@ -54,3 +55,7 @@ cnvkit.py call ${sample_name}.cns -y -m threshold -t=-1.0000000,0.5849625,1.3219
 # Pics
 cnvkit.py scatter ${sample_name}.cnr -s ${sample_name}.cns -o ${sample_name}-scatter.pdf
 cnvkit.py diagram ${sample_name}.cnr -s ${sample_name}.cns -o ${sample_name}-diagram.pdf
+
+
+cp ${sample_name}.call.cns ../../Results/${sample_name}
+cp *pdf ../../Results/${sample_name}

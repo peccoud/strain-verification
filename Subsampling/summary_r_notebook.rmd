@@ -8,7 +8,7 @@ output: html_notebook
 # Figure 1: Assembly metrics
 ```{r}
 library(ggplot2)
-fig_ouput_dir='Results/Summarized_results/Summary_figures'
+fig_output_dir = 'Results/Summarized_results/Summary_figures'
 dir.create(fig_output_dir, showWarnings = F)
 ```
 
@@ -73,7 +73,7 @@ g = ggplot(aes(x=reads, y=Genome.fraction...., colour=sample_name), data=quast_m
       theme_minimal() + 
       scale_x_reverse()
 g
-ggsave(file.path(fig_ouput_dir, 'genome_fraction_covered.pdf'), g)
+ggsave(file.path(fig_output_dir, 'genome_fraction_covered.pdf'), g)
 ```
 
 ## Largest contig
@@ -89,7 +89,7 @@ g = ggplot(aes(x=reads, y=Largest.contig, colour=sample_name), data=quast_metric
       #scale_x_reverse() +
       labs(color='Sample')
 g
-ggsave(file.path(fig_ouput_dir, 'largest_contig.pdf'), g)
+ggsave(file.path(fig_output_dir, 'largest_contig.pdf'), g)
 ```
 
 ## Total length of assembly
@@ -103,7 +103,7 @@ g = ggplot(aes(x=reads, y=Total.length, colour=sample_name), data=quast_metrics)
       labs(color='Sample') + 
       scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) 
 g
-ggsave(file.path(fig_ouput_dir, 'assembly_length.pdf'), g)
+ggsave(file.path(fig_output_dir, 'assembly_length.pdf'), g)
 ```
 
 ## Mismatches per 100kbp
@@ -118,7 +118,7 @@ g = ggplot(aes(x=reads, y=X..mismatches.per.100.kbp, colour=sample_name), data=q
       labs(color='Sample') + 
       scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) 
 g
-ggsave(file.path(fig_ouput_dir, 'mismatches_per_100kbp.pdf'), g)
+ggsave(file.path(fig_output_dir, 'mismatches_per_100kbp.pdf'), g)
 ```
 
 ## Indels per 100kbp
@@ -133,7 +133,7 @@ g = ggplot(aes(x=reads, y=X..indels.per.100.kbp, colour=sample_name), data=quast
       labs(color='Sample') + 
       scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) 
 g
-ggsave(file.path(fig_ouput_dir, 'indels_per_100kbp.pdf'), g)
+ggsave(file.path(fig_output_dir, 'indels_per_100kbp.pdf'), g)
 ```
 
 ## Number of misassemblies
@@ -153,6 +153,6 @@ g = ggplot(aes(x=reads, y=X..misassemblies, colour=sample_name), data=quast_metr
       labs(color='Sample') + 
       scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) 
 g
-ggsave(file.path(fig_ouput_dir, 'misassemblies.pdf'), g)
+ggsave(file.path(fig_output_dir, 'misassemblies.pdf'), g)
 ```
 

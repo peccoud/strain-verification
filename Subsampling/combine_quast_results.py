@@ -2,7 +2,8 @@ import os
 import pandas as pd
 
 quast_results = 'Results/SPAdes_quast_series'
-
+summarized_results_dir = 'Results/Summarized_results/'
+os.makedirs(summarized_results_dir, exist_ok=True)
 # Function for listing file paths in a tree
 def get_files_in_tree(dir_, ext=None):
     file_paths = list()
@@ -41,5 +42,5 @@ report_list = [read_report(r) for r in quast_res_dirs]
 quast_df =  process_reports(report_list)
 
 # Write out for analysis with R
-csv_path = 'Results/Summarized_results/Combined_Quast_reports.tsv'
+csv_path = os.path.join(summarized_results_dir, 'Combined_Quast_reports.tsv')
 quast_df.to_csv(csv_path, sep='\t', index=False)
