@@ -106,8 +106,16 @@ Results are stored in `CNV_calling/breakdancer/Results`.
 
 Breakdancer calls all samples at the same time. Results of all samples are in the same table.
 
-### CNV.kit v0.9.3
+### CNVkit v0.9.3
 
+Provided scripts assume that CNVkit is installed according to its [installation instructions](https://github.com/etal/cnvkit). After installation, invoke CNVkit pipeline using samples GRL1691 and GRL1693 by running:
+
+```
+cd CNV_calling
+bash cnv.kit/run_cnvkit.sh
+```
+
+Intermediary files produced by CNVkit pipeline will be stored in directory `CNV_calling/cnv.kit/Intermediary_files`. Copy number variants called by the pipeline will be stored in directory `CNV_calling/cnv.kit/Results/<sample_name>`.
 
 ## Variant calling
 
