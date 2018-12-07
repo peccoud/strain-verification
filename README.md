@@ -19,6 +19,11 @@ Directory structure reflects the types of performed analyses. Scripts for perfor
 * SOAPdenovo2 - http://soap.genomics.org.cn/soapdenovo.html
 * SPAdes - http://cab.spbu.ru/software/spades/
 * QUAST - http://bioinf.spbau.ru/quast
+* R - https://www.r-project.org
+
+Binaries/executables of dependencies should be available through PATH environment variable, except for Picard, GATK, and snpEFF. Picard JAR library must be placed to `bin/picard.jar`. GATK toolkit versions 4 and 3.8 must be placed to `bin/GATK-4.jar` and `bin/GATK-3.8.jar`. snpEFF should be installed to `bin/snpEFF`. None of the third party tools are shared in this repository. 
+
+
 
 # Analysis steps
 

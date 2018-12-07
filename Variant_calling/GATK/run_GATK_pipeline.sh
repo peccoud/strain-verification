@@ -2,7 +2,7 @@
 orig_bam1="../Processed_bams/GRL1691.rgadded.mkdup.bam"
 orig_bam2="Processed_bams/GRL1693.rgadded.mkdup.bam"
 ref_fasta="../Reference_files/genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa"
-gatk_jar="../bin/gatk-package-4.beta.5-local.jar"
+gatk_jar="../bin/GATK-4.jar"
 gatk_jar_38="../bin/GATK-3.8.jar"
 
 bam1_name=$(basename $orig_bam1)
