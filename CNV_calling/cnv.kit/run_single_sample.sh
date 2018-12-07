@@ -47,10 +47,10 @@ cnvkit.py fix \
  ${sample_name}.targetcoverage.cnn ${sample_name}.antitargetcoverage.cnn FlatReference.cnn
 
 # Segment
-cnvkit.py segment ${sample_name}.cnr -t 0.000006 -o ${sample_name}.cns
+cnvkit.py segment ${sample_name}.cnr -t 0.001 -o ${sample_name}.cns
 
 # Call
-cnvkit.py call ${sample_name}.cns -y -m threshold -t=-1.0000000,0.5849625,1.3219281,1.8073549,2.1699250 --purity 1 -o ${sample_name}.call.cns
+cnvkit.py call ${sample_name}.cns -y -m threshold -t=-2,-0.4150375,0.32192809,0.80735492,1.169925 --purity 1 -o ${sample_name}.call.cns
 
 # Pics
 cnvkit.py scatter ${sample_name}.cnr -s ${sample_name}.cns -o ${sample_name}-scatter.pdf
